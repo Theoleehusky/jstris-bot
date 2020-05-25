@@ -67,7 +67,7 @@ def screenshot():
              np.max(queue[6:9, 1:-1]),
              np.max(queue[9:12, 1:-1]),
              np.max(queue[12:15, 1:-1])]
-    return board[3:], queue
+    return board[1:], queue
 
 
 protpos = dict()
@@ -284,8 +284,6 @@ def calc_score(block_name, col_heights):
 
 def main():
     time.sleep(3)
-    # sum the columns to get max drop distance
-    # if drop distance is more for one piece than for others, a hole will form
 
     board, queue = screenshot()
     current_block = queue[1]
@@ -293,32 +291,31 @@ def main():
 
     keyboard.press_and_release('space')
     keyboard.press_and_release('c')
-    keydel = 1/64
+    keydel = 1/8
 
     for frame in range(50_000):
-        time.sleep(keydel)
+        time.sleep(1/128)
         board, queue = screenshot()
         col_heights = np.zeros(10)
         for col in range(10):
             for row in range(len(board)):
                 if board[row, col] != 0:
-                    col_heights[col] = 17 - row
+                    col_heights[col] = 19 - row
                     break
-
+        print(col_heights)
         block_name = num_to_shape[current_block]
-
         score, drop_orientation, drop_col, ncol_heights = calc_score(block_name, col_heights)
+        cscore, cdrop_orientation, cdrop_col, cncol_heights = calc_score(num_to_shape[cache], col_heights)
 
-        cache_score, cdrop_orientation, cdrop_col, cncol_heights = calc_score(num_to_shape[cache], col_heights)
-        if cache_score > score:
+        time.sleep(keydel)
+
+        if cscore > score:
             drop_orientation = cdrop_orientation
             drop_col = cdrop_col
             block_name = num_to_shape[cache]
             keyboard.press_and_release('c')
             cache = int(current_block)
             ncol_heights = cncol_heights
-
-            # print(score, cache_score)
 
         #     col_heights = ncol_heights
         #     print(col_heights)

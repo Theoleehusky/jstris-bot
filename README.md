@@ -1,6 +1,6 @@
 # Jstris Bot
-Heavily inspired by mkhan45's work. 
-Do not use this to get onto the leaderboards; that is against the website policy.
+(Still WIP on the algorithm)
+Heavily inspired by mkhan45's work. Configured for multiplayer (to destroy your friends in a private lobby). First piece is hard dropped.
 
 ## Setup
 Takes screenshots on a 1920x1080 monitor. 
@@ -15,5 +15,4 @@ The coordinates of screenshots can be changed for different setups.
 * numba for efficiency
 
 ## Configuration
-Do not set time delay below approximately 1/64 seconds. 
-The next piece is considered before all keys are pressed.
+Make sure ghost is disabled in settings.
