@@ -1,6 +1,6 @@
 # Jstris Bot
 (Still WIP on the algorithm)
-Heavily inspired by mkhan45's work. Configured for multiplayer (to destroy your friends in a private lobby). First piece is hard dropped.
+Heavily inspired by mkhan45's work. Configured for multiplayer (to beat your friends in a private lobby). First piece is hard dropped.
 
 ## Setup
 Takes screenshots on a 1920x1080 monitor. 
